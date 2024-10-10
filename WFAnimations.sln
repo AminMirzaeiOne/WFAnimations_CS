@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAnimations", "WFAnimations\WFAnimations.csproj", "{4AD80952-A02F-4B56-8311-13EDA1D1FC1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AD80952-A02F-4B56-8311-13EDA1D1FC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD80952-A02F-4B56-8311-13EDA1D1FC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD80952-A02F-4B56-8311-13EDA1D1FC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD80952-A02F-4B56-8311-13EDA1D1FC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F938A40-3A76-40ED-852D-E959521B8DD3}
+	EndGlobalSection
+EndGlobal
