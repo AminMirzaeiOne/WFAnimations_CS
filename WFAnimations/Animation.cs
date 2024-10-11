@@ -42,7 +42,8 @@ namespace WFAnimations
         public PointF BlindCoeff { get; set; }
 
         public float TimeCoeff { get; set; }
-
+        public float MinTime { get; set; }
+        public float MaxTime { get; set; }
 
 
 
