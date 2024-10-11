@@ -41,6 +41,20 @@ namespace WFAnimations
         public Control AnimatedControl { get; set; }
 
 
+        public void Dispose()
+        {
+            if (ctrlBmp != null)
+                BgBmp.Dispose();
+            if (ctrlBmp != null)
+                ctrlBmp.Dispose();
+            if (Frame != null)
+                Frame.Dispose();
+            AnimatedControl = null;
+
+            Hide();
+        }
+
+
 
     }
 }
