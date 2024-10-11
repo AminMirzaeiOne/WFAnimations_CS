@@ -41,6 +41,9 @@ namespace WFAnimations
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
         public PointF BlindCoeff { get; set; }
 
+        public float TimeCoeff { get; set; }
+
+
 
 
     }
