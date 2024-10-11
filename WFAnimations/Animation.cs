@@ -52,15 +52,23 @@ namespace WFAnimations
         {
             get
             {
-                if (BlindCoeff == PointF.Empty)
-                    if (MosaicCoeff == PointF.Empty || MosaicSize == 0)
-                        if (TransparencyCoeff == 0f)
-                            if (LeafCoeff == 0f)
+                if (this.BlindCoeff == PointF.Empty)
+                    if (this.MosaicCoeff == PointF.Empty || this.MosaicSize == 0)
+                        if (this.TransparencyCoeff == 0f)
+                            if (this.LeafCoeff == 0f)
                                 return false;
 
                 return true;
             }
         }
+
+        public Animation()
+        {
+            this.MinTime = 0f;
+            this.MaxTime = 1f;
+            this.AnimateOnlyDifferences = true;
+        }
+
 
 
 
