@@ -20,6 +20,11 @@ namespace WFAnimations
         private Thread thread;
         System.Windows.Forms.Timer timer;
 
+        /// <summary>
+        /// Occurs when animation of the control is completed
+        /// </summary>
+        public event EventHandler<AnimationCompletedEventArg> AnimationCompleted;
+
 
     }
 }
