@@ -68,6 +68,14 @@ namespace WFAnimations
         [DefaultValue(typeof(Cursor), "Default")]
         public Cursor Cursor { get; set; }
 
+        /// <summary>
+        /// Are all animations completed?
+        /// </summary>
+        public bool IsCompleted
+        {
+            get { lock (queue) return queue.Count == 0; }
+        }
+
 
 
 
