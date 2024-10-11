@@ -281,6 +281,35 @@ namespace WFAnimations
             return bmp;
         }
 
+        protected virtual void OnTransfromNeeded(object sender, TransfromNeededEventArg e)
+        {
+            try
+            {
+                if (CustomClipRect != default(Rectangle))
+                    e.ClipRectangle = ControlRectToMyRect(CustomClipRect);
+
+                e.CurrentTime = CurrentTime;
+
+                if (TransfromNeeded != null)
+                    TransfromNeeded(this, e);
+                else
+                    e.UseDefaultMatrix = true;
+
+                if (e.UseDefaultMatrix)
+                {
+                    TransfromHelper.DoScale(e, animation);
+                    TransfromHelper.DoRotate(e, animation);
+                    TransfromHelper.DoSlide(e, animation, this.Upside);
+                }
+            }
+            catch
+            {
+            }
+        }
+
+
+
+
 
     }
 }
