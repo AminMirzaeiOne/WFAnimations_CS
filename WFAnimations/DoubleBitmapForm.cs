@@ -12,6 +12,9 @@ namespace WFAnimations
 {
     public partial class DoubleBitmapForm : Form, IFakeControl
     {
+        Bitmap bgBmp;
+        Bitmap frame;
+
         public DoubleBitmapForm()
         {
             InitializeComponent();
