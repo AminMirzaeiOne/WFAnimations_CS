@@ -93,6 +93,27 @@ namespace WFAnimations
             Init();
         }
 
+        private void Init()
+        {
+            this.Parent = DecoratedControl.Parent;
+            this.Visible = DecoratedControl.Visible;
+            this.Location = new Point(DecoratedControl.Left - Padding.Left, DecoratedControl.Top - Padding.Top);
+
+
+            if (Parent != null)
+            {
+                var i = Parent.Controls.GetChildIndex(DecoratedControl);
+                Parent.Controls.SetChildIndex(this, i + 1);
+            }
+
+            var newSize = new Size(DecoratedControl.Width + Padding.Left + Padding.Right, DecoratedControl.Height + Padding.Top + Padding.Bottom);
+            if (newSize != Size)
+            {
+                this.Size = newSize;
+            }
+        }
+
+
 
     }
 }
