@@ -24,6 +24,9 @@ namespace WFAnimations
 
         public bool Upside { get; set; } = false;
 
+        public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
+
+
 
     }
 }
