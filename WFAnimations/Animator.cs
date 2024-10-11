@@ -86,6 +86,8 @@ namespace WFAnimations
             set;
         }
 
+        public bool Upside { get; set; } = false;
+
 
 
     }
