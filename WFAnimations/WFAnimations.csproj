@@ -54,6 +54,9 @@
     <Compile Include="DecorationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DoubleBitmapControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
