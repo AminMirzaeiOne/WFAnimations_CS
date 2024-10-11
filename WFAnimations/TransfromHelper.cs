@@ -38,5 +38,28 @@ namespace WFAnimations
             }
         }
 
+        public static void DoBlind(NonLinearTransfromNeededEventArg e, Animation animation)
+        {
+            if (animation.BlindCoeff == PointF.Empty)
+                return;
+
+            var pixels = e.Pixels;
+            var sx = e.ClientRectangle.Width;
+            var sy = e.ClientRectangle.Height;
+            var s = e.Stride;
+            var kx = animation.BlindCoeff.X;
+            var ky = animation.BlindCoeff.Y;
+            var a = (int)((sx * kx + sy * ky) * (1 - e.CurrentTime));
+
+            for (int x = 0; x < sx; x++)
+                for (int y = 0; y < sy; y++)
+                {
+                    int i = y * s + x * bytesPerPixel;
+                    var d = x * kx + y * ky - a;
+                    if (d >= 0)
+                        pixels[i + 3] = (byte)0;
+                }
+        }
+
     }
 }
