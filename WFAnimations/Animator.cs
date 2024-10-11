@@ -505,6 +505,52 @@ namespace WFAnimations
             OnAnimationCompleted(new AnimationCompletedEventArg { Animation = item.animation, Control = item.control, Mode = item.mode });
         }
 
+        /// <summary>
+        /// Adds the contol to animation queue.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        /// <param name="mode">Animation mode</param>
+        /// <param name="parallel">Allows to animate it same time as other animations</param>
+        /// <param name="animation">Personal animation</param> 
+        public void AddToQueue(Control control, AnimateMode mode, bool parallel = true, Animation animation = null, Rectangle clipRectangle = default(Rectangle))
+        {
+            if (animation == null)
+                animation = DefaultAnimation;
+
+            if (control is IFakeControl)
+            {
+                control.Visible = false;
+                return;
+            }
+
+            var item = new QueueItem() { animation = animation, control = control, IsActive = parallel, mode = mode, clipRectangle = clipRectangle };
+
+            //check visible state
+            switch (mode)
+            {
+                case AnimateMode.Show:
+                    if (control.Visible)//already showed
+                    {
+                        OnCompleted(new QueueItem { control = control, mode = mode });
+                        return;
+                    }
+                    break;
+                case AnimateMode.Hide:
+                    if (!control.Visible)//already hidden
+                    {
+                        OnCompleted(new QueueItem { control = control, mode = mode });
+                        return;
+                    }
+                    break;
+            }
+
+            //add to queue
+            lock (queue)
+                queue.Add(item);
+            lock (requests)
+                requests.Add(item);
+        }
+
 
 
     }
