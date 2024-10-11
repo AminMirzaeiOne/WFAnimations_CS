@@ -136,7 +136,15 @@ namespace WFAnimations
             thread.Start();
         }
 
-
+        void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            //create invoker in main UI therad
+            invokerControl = new Control();
+            invokerControl.CreateControl();
+            //
+            Start();
+        }
 
 
     }
