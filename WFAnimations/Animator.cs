@@ -89,7 +89,14 @@ namespace WFAnimations
 
         public bool Upside { get; set; } = false;
 
-
+        /// <summary>
+        /// Type of built-in animation
+        /// </summary>
+        public AnimationType AnimationType
+        {
+            get { return animationType; }
+            set { animationType = value; InitDefaultAnimation(animationType); }
+        }
 
     }
 }
