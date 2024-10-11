@@ -34,8 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 472);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(426, 403);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DoubleBitmapForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "DoubleBitmapForm";
             this.ResumeLayout(false);
 
