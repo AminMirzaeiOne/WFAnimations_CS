@@ -19,6 +19,8 @@ namespace WFAnimations
         public PointF SlideCoeff { get; set; }
 
         public float RotateCoeff { get; set; }
+        public float RotateLimit { get; set; }
+
 
     }
 }
