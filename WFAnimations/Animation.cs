@@ -25,6 +25,8 @@ namespace WFAnimations
         public PointF ScaleCoeff { get; set; }
 
         public float TransparencyCoeff { get; set; }
+        public float LeafCoeff { get; set; }
+
 
 
 
