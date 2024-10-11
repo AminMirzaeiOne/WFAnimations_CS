@@ -27,5 +27,24 @@ namespace WFAnimations
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                unchecked
+                {
+                    cp.Style = (int)Flags.WindowStyles.WS_POPUP;
+                }
+                ;
+                cp.ExStyle |= (int)Flags.WindowStyles.WS_EX_NOACTIVATE | (int)Flags.WindowStyles.WS_EX_TOOLWINDOW;
+                cp.X = this.Location.X;
+                cp.Y = this.Location.Y;
+                return cp;
+            }
+        }
+
+
     }
 }
