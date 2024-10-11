@@ -231,7 +231,41 @@ namespace WFAnimations
             }
         }
 
+        /// <summary>
+        /// Check result state of controls
+        /// </summary>
+        private void CheckRequests()
+        {
+            var toRemove = new List<QueueItem>();
 
+            lock (requests)
+            {
+                var dict = new Dictionary<Control, QueueItem>();
+                foreach (var item in requests)
+                    if (item.control != null)
+                    {
+                        if (dict.ContainsKey(item.control))
+                            toRemove.Add(dict[item.control]);
+                        dict[item.control] = item;
+                    }
+                    else
+                        toRemove.Add(item);
+
+                foreach (var item in dict.Values)
+                {
+                    if (item.control != null && !IsStateOK(item.control, item.mode))
+                    {
+                        if (invokerControl != null)
+                            RepairState(item.control, item.mode);
+                    }
+                    else
+                        toRemove.Add(item);
+                }
+
+                foreach (var item in toRemove)
+                    requests.Remove(item);
+            }
+        }
 
 
     }
