@@ -267,6 +267,17 @@ namespace WFAnimations
             }
         }
 
+        bool IsStateOK(Control control, AnimateMode mode)
+        {
+            switch (mode)
+            {
+                case AnimateMode.Hide: return !control.Visible;
+                case AnimateMode.Show: return control.Visible;
+            }
+
+            return true;
+        }
+
 
     }
 }
