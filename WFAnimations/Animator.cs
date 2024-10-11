@@ -570,6 +570,24 @@ namespace WFAnimations
                 FramePainted(sender, e);
         }
 
+        protected virtual void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                //transform point to animated control's coordinates 
+                var db = (Controller)sender;
+                db.Upside = this.Upside;
+                var l = e.Location;
+                l.Offset(db.DoubleBitmap.Left - db.AnimatedControl.Left, db.DoubleBitmap.Top - db.AnimatedControl.Top);
+                //
+                if (MouseDown != null)
+                    MouseDown(sender, new MouseEventArgs(e.Button, e.Clicks, l.X, l.Y, e.Delta));
+            }
+            catch
+            {
+            }
+        }
+
 
 
     }
