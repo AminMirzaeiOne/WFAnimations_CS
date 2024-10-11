@@ -28,6 +28,7 @@ namespace WFAnimations
         public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
         public event EventHandler<NonLinearTransfromNeededEventArg> NonLinearTransfromNeeded;
         public event EventHandler<PaintEventArgs> FramePainting;
+        public event EventHandler<PaintEventArgs> FramePainted;
 
 
 
