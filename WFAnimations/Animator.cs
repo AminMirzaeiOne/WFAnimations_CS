@@ -56,7 +56,11 @@ namespace WFAnimations
         [DefaultValue(1500)]
         public int MaxAnimationTime { get; set; }
 
-
+        /// <summary>
+        /// Default animation
+        /// </summary>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public Animation DefaultAnimation { get; set; }
 
 
 
