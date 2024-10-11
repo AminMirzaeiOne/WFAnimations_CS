@@ -77,7 +77,10 @@ namespace WFAnimations
         public static WFAnimations.Animation Rotate { get { return new Animation { RotateCoeff = 1f, TransparencyCoeff = 1, Padding = new Padding(50, 50, 50, 50) }; } }
         public static Animation HorizSlide { get { return new Animation { SlideCoeff = new PointF(1, 0) }; } }
         public static Animation VertSlide { get { return new Animation { SlideCoeff = new PointF(0, 1) }; } }
-
+        public static Animation Scale { get { return new Animation { ScaleCoeff = new PointF(1, 1) }; } }
+        public static Animation ScaleAndRotate { get { return new Animation { ScaleCoeff = new PointF(1, 1), RotateCoeff = 0.5f, RotateLimit = 0.2f, Padding = new Padding(30, 30, 30, 30) }; } }
+        public static Animation HorizSlideAndRotate { get { return new Animation { SlideCoeff = new PointF(1, 0), RotateCoeff = 0.3f, RotateLimit = 0.2f, Padding = new Padding(50, 50, 50, 50) }; } }
+        public static Animation ScaleAndHorizSlide { get { return new Animation { ScaleCoeff = new PointF(1, 1), SlideCoeff = new PointF(1, 0), Padding = new Padding(30, 0, 0, 0) }; } }
 
 
 
