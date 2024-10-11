@@ -66,6 +66,7 @@
     <Compile Include="DoubleBitmapForm.Designer.cs">
       <DependentUpon>DoubleBitmapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flags.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
