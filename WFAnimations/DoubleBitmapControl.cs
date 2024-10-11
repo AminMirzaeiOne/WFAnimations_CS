@@ -21,6 +21,14 @@ namespace WFAnimations
         public event EventHandler<PaintEventArgs> FramePainted;
         public event EventHandler<PaintEventArgs> FramePainting;
 
+        public DoubleBitmapControl()
+        {
+            InitializeComponent();
+
+            Visible = false;
+            SetStyle(ControlStyles.Selectable, false);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
+        }
 
     }
 }
