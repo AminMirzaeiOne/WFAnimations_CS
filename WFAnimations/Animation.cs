@@ -48,6 +48,20 @@ namespace WFAnimations
         public bool AnimateOnlyDifferences { get; set; }
 
 
+        public bool IsNonLinearTransformNeeded
+        {
+            get
+            {
+                if (BlindCoeff == PointF.Empty)
+                    if (MosaicCoeff == PointF.Empty || MosaicSize == 0)
+                        if (TransparencyCoeff == 0f)
+                            if (LeafCoeff == 0f)
+                                return false;
+
+                return true;
+            }
+        }
+
 
 
     }
