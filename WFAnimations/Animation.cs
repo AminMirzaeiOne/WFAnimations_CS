@@ -88,5 +88,21 @@ namespace WFAnimations
         public static Animation VertBlind { get { return new Animation { BlindCoeff = new PointF(0f, 1f) }; } }
         public static Animation HorizBlind { get { return new Animation { BlindCoeff = new PointF(1f, 0f) }; } }
 
+        public void Add(Animation a)
+        {
+            this.SlideCoeff = new PointF(SlideCoeff.X + a.SlideCoeff.X, SlideCoeff.Y + a.SlideCoeff.Y);
+            this.RotateCoeff += a.RotateCoeff;
+            this.RotateLimit += a.RotateLimit;
+            this.ScaleCoeff = new PointF(ScaleCoeff.X + a.ScaleCoeff.X, ScaleCoeff.Y + a.ScaleCoeff.Y);
+            this.TransparencyCoeff += a.TransparencyCoeff;
+            this.LeafCoeff += a.LeafCoeff;
+            this.MosaicShift = new PointF(MosaicShift.X + a.MosaicShift.X, MosaicShift.Y + a.MosaicShift.Y);
+            this.MosaicCoeff = new PointF(MosaicCoeff.X + a.MosaicCoeff.X, MosaicCoeff.Y + a.MosaicCoeff.Y);
+            this.MosaicSize += a.MosaicSize;
+            this.BlindCoeff = new PointF(BlindCoeff.X + a.BlindCoeff.X, BlindCoeff.Y + a.BlindCoeff.Y);
+            this.TimeCoeff += a.TimeCoeff;
+            this.Padding += a.Padding;
+        }
+
     }
 }
