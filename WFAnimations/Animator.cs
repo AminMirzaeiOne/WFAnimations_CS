@@ -327,6 +327,27 @@ namespace WFAnimations
             }
         }
 
+        private void InitDefaultAnimation(AnimationType animationType)
+        {
+            switch (animationType)
+            {
+                case AnimationType.Custom: break;
+                case AnimationType.Rotate: DefaultAnimation = Animation.Rotate; break;
+                case AnimationType.HorizSlide: DefaultAnimation = Animation.HorizSlide; break;
+                case AnimationType.VertSlide: DefaultAnimation = Animation.VertSlide; break;
+                case AnimationType.Scale: DefaultAnimation = Animation.Scale; break;
+                case AnimationType.ScaleAndRotate: DefaultAnimation = Animation.ScaleAndRotate; break;
+                case AnimationType.HorizSlideAndRotate: DefaultAnimation = Animation.HorizSlideAndRotate; break;
+                case AnimationType.ScaleAndHorizSlide: DefaultAnimation = Animation.ScaleAndHorizSlide; break;
+                case AnimationType.Transparent: DefaultAnimation = Animation.Transparent; break;
+                case AnimationType.Leaf: DefaultAnimation = Animation.Leaf; break;
+                case AnimationType.Mosaic: DefaultAnimation = Animation.Mosaic; break;
+                case AnimationType.Particles: DefaultAnimation = Animation.Particles; break;
+                case AnimationType.VertBlind: DefaultAnimation = Animation.VertBlind; break;
+                case AnimationType.HorizBlind: DefaultAnimation = Animation.HorizBlind; break;
+            }
+        }
+
 
 
     }
