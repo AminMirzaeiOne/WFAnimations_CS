@@ -14,6 +14,7 @@ namespace WFAnimations
         public Control DecoratedControl { get; set; }
         public Padding Paddings { get; set; }
         public Bitmap CtrlBmp { get; set; }
+        public byte[] CtrlPixels { get; set; }
 
 
     }
