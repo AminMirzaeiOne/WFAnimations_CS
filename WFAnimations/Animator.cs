@@ -377,6 +377,17 @@ namespace WFAnimations
             WaitAnimation(control);
         }
 
+        /// <summary>
+        /// Hides the control. As result the control will be hidden with animation.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        /// <param name="parallel">Allows to animate it same time as other animations</param>
+        /// <param name="animation">Personal animation</param>
+        public void Hide(Control control, bool parallel = false, Animation animation = null)
+        {
+            this.AddToQueue(control, AnimateMode.Hide, parallel, animation);
+        }
+
 
 
     }
