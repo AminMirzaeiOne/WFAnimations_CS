@@ -164,5 +164,20 @@ namespace WFAnimations
                 }
         }
 
+        public static void DoTransparent(NonLinearTransfromNeededEventArg e, Animation animation)
+        {
+            if (animation.TransparencyCoeff == 0f)
+                return;
+            var opacity = 1f - animation.TransparencyCoeff * e.CurrentTime;
+            if (opacity < 0f)
+                opacity = 0f;
+            if (opacity > 1f)
+                opacity = 1f;
+
+            var pixels = e.Pixels;
+            for (int counter = 0; counter < pixels.Length; counter += bytesPerPixel)
+                pixels[counter + 3] = (byte)(pixels[counter + 3] * opacity);
+        }
+
     }
 }
