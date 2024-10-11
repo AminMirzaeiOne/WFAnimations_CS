@@ -69,6 +69,11 @@ namespace WFAnimations
             this.AnimateOnlyDifferences = true;
         }
 
+        public Animation Clone()
+        {
+            return (Animation)MemberwiseClone();
+        }
+
 
 
 
