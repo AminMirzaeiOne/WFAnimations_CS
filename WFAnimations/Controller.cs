@@ -69,6 +69,15 @@ namespace WFAnimations
                 catch { }
         }
 
+        protected virtual Rectangle GetBounds()
+        {
+            return new Rectangle(
+                AnimatedControl.Left - animation.Padding.Left,
+                AnimatedControl.Top - animation.Padding.Top,
+                AnimatedControl.Size.Width + animation.Padding.Left + animation.Padding.Right,
+                AnimatedControl.Size.Height + animation.Padding.Top + animation.Padding.Bottom);
+        }
+
 
     }
 }
