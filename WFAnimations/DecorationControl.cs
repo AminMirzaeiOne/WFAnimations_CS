@@ -17,6 +17,7 @@ namespace WFAnimations
         public byte[] CtrlPixels { get; set; }
         public int CtrlStride { get; set; }
         public Bitmap Frame { get; set; }
+        public float CurrentTime { get; set; }
 
 
     }
