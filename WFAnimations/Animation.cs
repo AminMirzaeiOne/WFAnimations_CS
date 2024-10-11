@@ -83,6 +83,7 @@ namespace WFAnimations
         public static Animation ScaleAndHorizSlide { get { return new Animation { ScaleCoeff = new PointF(1, 1), SlideCoeff = new PointF(1, 0), Padding = new Padding(30, 0, 0, 0) }; } }
         public static Animation Transparent { get { return new Animation { TransparencyCoeff = 1 }; } }
         public static Animation Leaf { get { return new Animation { LeafCoeff = 1 }; } }
+        public static Animation Mosaic { get { return new Animation { MosaicCoeff = new PointF(100f, 100f), MosaicSize = 20, Padding = new Padding(30, 30, 30, 30) }; } }
 
 
     }
