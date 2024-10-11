@@ -493,6 +493,18 @@ namespace WFAnimations
         }
 
 
+        void OnCompleted(QueueItem item)
+        {
+            if (item.controller != null)
+            {
+                item.controller.Dispose();
+            }
+            lock (queue)
+                queue.Remove(item);
+
+            OnAnimationCompleted(new AnimationCompletedEventArg { Animation = item.animation, Control = item.control, Mode = item.mode });
+        }
+
 
 
     }
