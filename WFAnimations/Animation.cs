@@ -45,6 +45,7 @@ namespace WFAnimations
         public float MinTime { get; set; }
         public float MaxTime { get; set; }
         public Padding Padding { get; set; }
+        public bool AnimateOnlyDifferences { get; set; }
 
 
 
