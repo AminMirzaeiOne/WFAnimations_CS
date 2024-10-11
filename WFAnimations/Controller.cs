@@ -245,6 +245,16 @@ namespace WFAnimations
             return bmp;
         }
 
+        private Bitmap GetScreenBackground(Control ctrl, bool includeForeground, bool clip)
+        {
+            var size = Screen.PrimaryScreen.Bounds.Size;
+            Graphics temp = DoubleBitmap.CreateGraphics();//???
+            var bmp = new Bitmap(size.Width, size.Height, temp);
+            Graphics gr = Graphics.FromImage(bmp);
+            gr.CopyFromScreen(0, 0, 0, 0, size);
+            return bmp;
+        }
+
 
     }
 }
