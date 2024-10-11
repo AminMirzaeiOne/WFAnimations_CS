@@ -30,6 +30,11 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler AllAnimationsCompleted;
 
+        /// <summary>
+        /// Occurs when needed transform matrix
+        /// </summary>
+        public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
+
 
     }
 }
