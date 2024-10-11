@@ -354,6 +354,17 @@ namespace WFAnimations
         [DefaultValue(0.02f)]
         public float TimeStep { get; set; }
 
+        /// <summary>
+        /// Shows the control. As result the control will be shown with animation.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        /// <param name="parallel">Allows to animate it same time as other animations</param>
+        /// <param name="animation">Personal animation</param>
+        public void Show(Control control, bool parallel = false, Animation animation = null)
+        {
+            AddToQueue(control, AnimateMode.Show, parallel, animation);
+        }
+
 
 
     }
