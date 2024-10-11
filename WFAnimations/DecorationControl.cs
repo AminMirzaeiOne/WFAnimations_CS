@@ -114,6 +114,19 @@ namespace WFAnimations
             }
         }
 
+        protected virtual Bitmap GetForeground(Control ctrl)
+        {
+            Bitmap bmp = new Bitmap(this.Width, this.Height);
+
+            if (!ctrl.IsDisposed)
+            {
+                isSnapshotNow = true;
+                ctrl.DrawToBitmap(bmp, new Rectangle(Padding.Left, Padding.Top, ctrl.Width, ctrl.Height));
+                isSnapshotNow = false;
+            }
+            return bmp;
+        }
+
 
 
     }
