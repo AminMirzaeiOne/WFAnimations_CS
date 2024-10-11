@@ -22,6 +22,28 @@ namespace WFAnimations
         public Bitmap Frame { get; set; }
         public float CurrentTime { get; set; }
 
+        public DecorationControl(DecorationType type, Control decoratedControl)
+        {
+            this.DecorationType = type;
+            this.DecoratedControl = decoratedControl;
+
+            decoratedControl.VisibleChanged += new EventHandler(control_VisibleChanged);
+            decoratedControl.ParentChanged += new EventHandler(control_VisibleChanged);
+            decoratedControl.LocationChanged += new EventHandler(control_VisibleChanged);
+
+            decoratedControl.Paint += new PaintEventHandler(decoratedControl_Paint);
+
+            SetStyle(ControlStyles.Selectable, false);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
+
+            InitPadding();
+
+            tm = new System.Windows.Forms.Timer();
+            tm.Interval = 100;
+            tm.Tick += new EventHandler(tm_Tick);
+            tm.Enabled = true;
+        }
+
 
     }
 }
