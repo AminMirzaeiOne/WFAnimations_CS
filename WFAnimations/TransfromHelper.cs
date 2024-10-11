@@ -228,5 +228,34 @@ namespace WFAnimations
             e.Matrix.Translate(-center.X, -center.Y);
         }
 
+        public static void DoBottomMirror(NonLinearTransfromNeededEventArg e)
+        {
+            var source = e.SourcePixels;
+            var output = e.Pixels;
+
+            var s = e.Stride;
+            var dy = 1;
+            var beginY = e.SourceClientRectangle.Bottom + dy;
+            var sy = e.ClientRectangle.Height;
+            var beginX = e.SourceClientRectangle.Left;
+            var endX = e.SourceClientRectangle.Right;
+            var d = sy - beginY;
+
+            for (int x = beginX; x < endX; x++)
+                for (int y = beginY; y < sy; y++)
+                {
+                    var sourceY = (int)(beginY - 1 - dy - (y - beginY));
+                    if (sourceY < 0)
+                        break;
+                    var sourceX = x;
+                    int sourceI = sourceY * s + sourceX * bytesPerPixel;
+                    int outI = y * s + x * bytesPerPixel;
+                    output[outI + 0] = source[sourceI + 0];
+                    output[outI + 1] = source[sourceI + 1];
+                    output[outI + 2] = source[sourceI + 2];
+                    output[outI + 3] = (byte)((1 - 1f * (y - beginY) / d) * 90);
+                }
+        }
+
     }
 }
