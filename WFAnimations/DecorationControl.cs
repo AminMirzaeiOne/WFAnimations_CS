@@ -195,6 +195,13 @@ namespace WFAnimations
             return bmp;
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            tm.Stop();
+            tm.Dispose();
+            base.Dispose(disposing);
+        }
+
 
 
     }
