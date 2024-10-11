@@ -22,9 +22,16 @@ Intelligent autocomplete control for textboxes and richtextboxes (Windows form) 
 
 <h2> 💡 How to use</h2>
 1 - Add the library (DLL) file to your Windows Forms application via Add Reference <br />
-2 - In the toolbox section, an option named IntelligenceMenu has been added, which you should drag and drop into your form designer. <br />
-3 - Then go to Intelligence Menu item feature and enter your desired options and write their text <br />
-4 - Then go to the desired TextBox or RichTextBox inside the form and select it and set the IntelligenceMenu option from among its properties. <br />
+2 - Drag the Animator component inside the Visual Studio ToolBox into the form designer <br />
+3 - Specify the type of animation from the properties box <br />
+4 - Then, use the Show() method in the coding to display a control in an animated form <br />
+``
+this.animator1.Show(this.button1);
+``
+5 - Then, in coding, use the Hide() method to hide a control in an animated way <br />
+``
+this.animator1.Hide(this.button1);
+``
 
 <h2>📷 Screenshots</h2>
 
