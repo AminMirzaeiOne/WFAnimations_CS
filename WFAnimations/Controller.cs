@@ -195,6 +195,56 @@ namespace WFAnimations
                 FramePainted(this, e);
         }
 
+        protected virtual Bitmap GetBackground(Control ctrl, bool includeForeground = false, bool clip = false)
+        {
+            if (ctrl is Form)
+                return GetScreenBackground(ctrl, includeForeground, clip);
+
+            var bounds = GetBounds();
+            var w = bounds.Width;
+            var h = bounds.Height;
+            if (w == 0) w = 1;
+            if (h == 1) h = 1;
+            Bitmap bmp = new Bitmap(w, h);
+
+
+            var clientRect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            PaintEventArgs ea = new PaintEventArgs(Graphics.FromImage(bmp), clientRect);
+            if (clip)
+            {
+                if (CustomClipRect == default(Rectangle))
+                    ea.Graphics.SetClip(new Rectangle(0, 0, w, h));
+                else
+                    ea.Graphics.SetClip(CustomClipRect);
+            }
+
+            if (ctrl.Parent != null)
+            {
+                for (int i = ctrl.Parent.Controls.Count - 1; i >= 0; i--)
+                {
+                    var c = ctrl.Parent.Controls[i];
+                    if (c == ctrl && !includeForeground) break;
+                    if (c.Visible && !c.IsDisposed)
+                        if (c.Bounds.IntersectsWith(bounds))
+                        {
+                            using (Bitmap cb = new Bitmap(c.Width, c.Height))
+                            {
+                                c.DrawToBitmap(cb, new Rectangle(0, 0, c.Width, c.Height));
+                                /*if (c == ctrl)
+                                    ea.Graphics.SetClip(clipRect);*/
+                                ea.Graphics.DrawImage(cb, c.Left - bounds.Left, c.Top - bounds.Top, c.Width, c.Height);
+                            }
+                        }
+                    if (c == ctrl) break;
+                }
+            }
+
+
+            ea.Graphics.Dispose();
+
+            return bmp;
+        }
+
 
     }
 }
