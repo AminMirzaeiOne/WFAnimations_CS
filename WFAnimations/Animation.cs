@@ -44,6 +44,8 @@ namespace WFAnimations
         public float TimeCoeff { get; set; }
         public float MinTime { get; set; }
         public float MaxTime { get; set; }
+        public Padding Padding { get; set; }
+
 
 
 
