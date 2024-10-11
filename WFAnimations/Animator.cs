@@ -348,6 +348,12 @@ namespace WFAnimations
             }
         }
 
+        /// <summary>
+        /// Time step
+        /// </summary>
+        [DefaultValue(0.02f)]
+        public float TimeStep { get; set; }
+
 
 
     }
