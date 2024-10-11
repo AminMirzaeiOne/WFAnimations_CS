@@ -30,5 +30,29 @@ namespace WFAnimations
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            var gr = e.Graphics;
+
+            OnFramePainting(e);
+
+            try
+            {
+                gr.DrawImage(bgBmp, 0, 0);
+                if (frame != null)
+                {
+                    var ea = new TransfromNeededEventArg() { ClientRectangle = new Rectangle(0, 0, this.Width, this.Height) };
+                    ea.ClipRectangle = ea.ClientRectangle;
+                    OnTransfromNeeded(ea);
+                    gr.SetClip(ea.ClipRectangle);
+                    gr.Transform = ea.Matrix;
+                    gr.DrawImage(frame, 0, 0);
+                }
+            }
+            catch { }
+
+            OnFramePainted(e);
+        }
+
     }
 }
