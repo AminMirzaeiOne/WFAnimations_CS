@@ -25,5 +25,18 @@ namespace WFAnimations
             e.Matrix.Translate(-center.X, -center.Y);
         }
 
+        public static void DoSlide(TransfromNeededEventArg e, Animation animation, bool upside)
+        {
+            var k = e.CurrentTime;
+            if (!upside)
+            {
+                e.Matrix.Translate(-e.ClientRectangle.Width * k * animation.SlideCoeff.X, -e.ClientRectangle.Height * k * animation.SlideCoeff.Y);
+            }
+            else
+            {
+                e.Matrix.Translate(e.ClientRectangle.Width * k * animation.SlideCoeff.X, -e.ClientRectangle.Height * k * animation.SlideCoeff.Y);
+            }
+        }
+
     }
 }
