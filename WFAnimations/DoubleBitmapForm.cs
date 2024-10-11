@@ -21,6 +21,11 @@ namespace WFAnimations
         public DoubleBitmapForm()
         {
             InitializeComponent();
+            Visible = false;
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
+            TopMost = true;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
         }
     }
 }
