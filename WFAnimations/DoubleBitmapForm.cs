@@ -92,6 +92,14 @@ namespace WFAnimations
                 FramePainted(this, e);
         }
 
+        public void InitParent(Control control, Padding padding)
+        {
+            this.control = control;
+            Location = new Point(0, 0);
+            Size = Screen.PrimaryScreen.Bounds.Size;
+            control.VisibleChanged += new EventHandler(control_VisibleChanged);
+            this.padding = padding;
+        }
 
 
 
