@@ -78,6 +78,15 @@ namespace WFAnimations
                 AnimatedControl.Size.Height + animation.Padding.Top + animation.Padding.Bottom);
         }
 
+        protected virtual Rectangle ControlRectToMyRect(Rectangle rect)
+        {
+            return new Rectangle(
+                animation.Padding.Left + rect.Left,
+                animation.Padding.Top + rect.Top,
+                rect.Width + animation.Padding.Left + animation.Padding.Right,
+                rect.Height + animation.Padding.Top + animation.Padding.Bottom);
+        }
+
 
     }
 }
