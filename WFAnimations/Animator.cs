@@ -467,6 +467,30 @@ namespace WFAnimations
                 Application.DoEvents();
         }
 
+        /// <summary>
+        /// Waits while animation of the control will completed.
+        /// </summary>
+        /// <param name="animatedControl"></param>
+        public void WaitAnimation(Control animatedControl)
+        {
+            while (true)
+            {
+                bool flag = false;
+                lock (queue)
+                    foreach (var item in queue)
+                        if (item.control == animatedControl)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                if (!flag)
+                    return;
+
+                Application.DoEvents();
+            }
+        }
+
 
     }
 }
