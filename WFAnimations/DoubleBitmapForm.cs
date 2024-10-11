@@ -14,6 +14,8 @@ namespace WFAnimations
     {
         Bitmap bgBmp;
         Bitmap frame;
+        Padding padding;
+        Control control;
 
         public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
 
