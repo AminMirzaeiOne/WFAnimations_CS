@@ -15,6 +15,7 @@ namespace WFAnimations
         public Padding Paddings { get; set; }
         public Bitmap CtrlBmp { get; set; }
         public byte[] CtrlPixels { get; set; }
+        public int CtrlStride { get; set; }
 
 
     }
