@@ -278,6 +278,29 @@ namespace WFAnimations
             return true;
         }
 
+        void RepairState(Control control, AnimateMode mode)
+        {
+            invokerControl.Invoke(new MethodInvoker(() =>
+            {
+                try
+                {
+                    switch (mode)
+                    {
+                        case AnimateMode.Hide:
+                            control.Visible = false;
+                            break;
+                        case AnimateMode.Show:
+                            control.Visible = true;
+                            break;
+                    }
+                }
+                catch
+                {
+                    //form was closed
+                }
+            }));
+        }
+
 
     }
 }
