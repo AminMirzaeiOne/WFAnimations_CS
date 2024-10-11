@@ -40,6 +40,11 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler<NonLinearTransfromNeededEventArg> NonLinearTransfromNeeded;
 
+        /// <summary>
+        /// Occurs when user click on the animated control
+        /// </summary>
+        public event EventHandler<MouseEventArgs> MouseDown;
+
 
     }
 }
