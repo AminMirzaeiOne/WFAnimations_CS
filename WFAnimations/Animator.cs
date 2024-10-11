@@ -14,6 +14,7 @@ namespace WFAnimations
     [ProvideProperty("Decoration", typeof(System.Windows.Forms.Control))]
     public class Animator : Component, IExtenderProvider
     {
+        IContainer components = null;
 
     }
 }
