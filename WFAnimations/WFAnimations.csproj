@@ -51,6 +51,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controller.cs" />
+    <Compile Include="DecorationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
