@@ -28,6 +28,10 @@ namespace WFAnimations
         public float LeafCoeff { get; set; }
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
+        public PointF MosaicShift { get; set; }
+
+
 
 
     }
