@@ -84,6 +84,12 @@ namespace WFAnimations
                 FramePainting(this, e);
         }
 
+        protected virtual void OnFramePainted(PaintEventArgs e)
+        {
+            if (FramePainted != null)
+                FramePainted(this, e);
+        }
+
 
 
 
