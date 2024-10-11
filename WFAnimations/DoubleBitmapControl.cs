@@ -11,5 +11,8 @@ namespace WFAnimations
     {
         Bitmap bgBmp;
         Bitmap frame;
+
+        Bitmap IFakeControl.BgBmp { get { return this.bgBmp; } set { this.bgBmp = value; } }
+
     }
 }
