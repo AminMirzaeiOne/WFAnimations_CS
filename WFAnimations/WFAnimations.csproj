@@ -50,6 +50,7 @@
     <Compile Include="Animator.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
