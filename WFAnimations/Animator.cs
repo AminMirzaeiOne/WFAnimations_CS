@@ -50,6 +50,14 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler<PaintEventArgs> FramePainted;
 
+        /// <summary>
+        /// Max time of animation (ms)
+        /// </summary>
+        [DefaultValue(1500)]
+        public int MaxAnimationTime { get; set; }
+
+
+
 
 
 
