@@ -121,5 +121,17 @@ namespace WFAnimations
             }
         }
 
+        public Bitmap Frame
+        {
+            get
+            {
+                return frame;
+            }
+            set
+            {
+                frame = value;
+            }
+        }
+
     }
 }
