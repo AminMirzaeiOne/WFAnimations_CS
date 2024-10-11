@@ -124,5 +124,45 @@ namespace WFAnimations
                 }
         }
 
+        public static void DoLeaf(NonLinearTransfromNeededEventArg e, Animation animation)
+        {
+            if (animation.LeafCoeff == 0f)
+                return;
+
+            var pixels = e.Pixels;
+            var sx = e.ClientRectangle.Width;
+            var sy = e.ClientRectangle.Height;
+            var s = e.Stride;
+            var a = (int)((sx + sy) * (1 - e.CurrentTime * e.CurrentTime));
+
+            var count = pixels.Length;
+
+            for (int x = 0; x < sx; x++)
+                for (int y = 0; y < sy; y++)
+                {
+                    int i = y * s + x * bytesPerPixel;
+                    if (x + y >= a)
+                    {
+                        var newX = a - y;
+                        var newY = a - x;
+                        var d = a - x - y;
+                        if (d < -20)
+                            d = -20;
+
+                        int newI = newY * s + newX * bytesPerPixel;
+                        if (newX >= 0 && newY >= 0)
+                            if (newI >= 0 && newI < count)
+                                if (pixels[i + 3] > 0)
+                                {
+                                    pixels[newI + 0] = (byte)Math.Min(255, d + 250 + pixels[i + 0] / 10);
+                                    pixels[newI + 1] = (byte)Math.Min(255, d + 250 + pixels[i + 1] / 10);
+                                    pixels[newI + 2] = (byte)Math.Min(255, d + 250 + pixels[i + 2] / 10);
+                                    pixels[newI + 3] = 230;
+                                }
+                        pixels[i + 3] = (byte)(0);
+                    }
+                }
+        }
+
     }
 }
