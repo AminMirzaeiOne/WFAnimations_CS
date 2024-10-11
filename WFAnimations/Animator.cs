@@ -596,6 +596,14 @@ namespace WFAnimations
                 e.UseDefaultTransform = true;
         }
 
+        protected virtual void OnTransformNeeded(object sender, TransfromNeededEventArg e)
+        {
+            if (TransfromNeeded != null)
+                TransfromNeeded(this, e);
+            else
+                e.UseDefaultMatrix = true;
+        }
+
 
 
     }
