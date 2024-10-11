@@ -54,6 +54,17 @@ namespace WFAnimations
             }
         }
 
+        private void tm_Tick(object sender, EventArgs e)
+        {
+            switch (DecorationType)
+            {
+                case Max_Calculator.Foreign.GAnimate.DecorationType.BottomMirror:
+                case Max_Calculator.Foreign.GAnimate.DecorationType.Custom:
+                    Invalidate();
+                    break;
+            }
+        }
+
 
     }
 }
