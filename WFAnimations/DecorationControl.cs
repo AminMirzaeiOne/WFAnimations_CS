@@ -54,7 +54,7 @@ namespace WFAnimations
         {
             switch (DecorationType)
             {
-                case Max_Calculator.Foreign.GAnimate.DecorationType.BottomMirror:
+                case WFAnimations.DecorationType.BottomMirror:
                     Padding = new Padding(0, 0, 0, 20);
                     break;
             }
@@ -64,8 +64,8 @@ namespace WFAnimations
         {
             switch (DecorationType)
             {
-                case Max_Calculator.Foreign.GAnimate.DecorationType.BottomMirror:
-                case Max_Calculator.Foreign.GAnimate.DecorationType.Custom:
+                case WFAnimations.DecorationType.BottomMirror:
+                case WFAnimations.DecorationType.Custom:
                     Invalidate();
                     break;
             }

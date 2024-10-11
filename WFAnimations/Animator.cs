@@ -118,7 +118,7 @@ namespace WFAnimations
 
         protected virtual void Init()
         {
-            AnimationType = Max_Calculator.Foreign.GAnimate.AnimationType.VertSlide;
+            AnimationType = WFAnimations.AnimationType.VertSlide;
             DefaultAnimation = new Animation();
             MaxAnimationTime = 1500;
             TimeStep = 0.02f;
