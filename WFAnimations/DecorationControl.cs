@@ -11,6 +11,7 @@ namespace WFAnimations
     public class DecorationControl : System.Windows.Forms.UserControl
     {
         private System.Windows.Forms.Timer tm;
+        private bool isSnapshotNow = false;
 
 
         public DecorationType DecorationType { get; set; }
