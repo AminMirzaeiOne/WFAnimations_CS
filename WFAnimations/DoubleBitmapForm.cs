@@ -45,6 +45,33 @@ namespace WFAnimations
             }
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            var gr = e.Graphics;
+
+            OnFramePainting(e);
+
+            try
+            {
+                gr.DrawImage(bgBmp, -Location.X, -Location.Y);
+
+                if (frame != null)
+                {
+                    var ea = new TransfromNeededEventArg();
+                    ea.ClientRectangle = ea.ClipRectangle = new Rectangle(control.Bounds.Left - padding.Left, control.Bounds.Top - padding.Top, control.Bounds.Width + padding.Horizontal, control.Bounds.Height + padding.Vertical);
+                    OnTransfromNeeded(ea);
+                    gr.SetClip(ea.ClipRectangle);
+                    gr.Transform = ea.Matrix;
+                    var p = control.Location;
+                    gr.DrawImage(frame, p.X - padding.Left, p.Y - padding.Top);
+                }
+
+                OnFramePainted(e);
+            }
+            catch { }
+
+        }
+
 
     }
 }
