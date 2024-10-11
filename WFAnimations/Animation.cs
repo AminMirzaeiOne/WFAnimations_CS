@@ -24,6 +24,9 @@ namespace WFAnimations
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
         public PointF ScaleCoeff { get; set; }
 
+        public float TransparencyCoeff { get; set; }
+
+
 
     }
 }
