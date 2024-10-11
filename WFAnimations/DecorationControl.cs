@@ -44,6 +44,16 @@ namespace WFAnimations
             tm.Enabled = true;
         }
 
+        private void InitPadding()
+        {
+            switch (DecorationType)
+            {
+                case Max_Calculator.Foreign.GAnimate.DecorationType.BottomMirror:
+                    Padding = new Padding(0, 0, 0, 20);
+                    break;
+            }
+        }
+
 
     }
 }
