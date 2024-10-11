@@ -693,6 +693,24 @@ namespace WFAnimations
                 return DecorationType.None;
         }
 
+        public void SetDecoration(Control control, DecorationType decoration)
+        {
+            var wrapper = DecorationByControls.ContainsKey(control) ? DecorationByControls[control] : null;
+            if (decoration == DecorationType.None)
+            {
+                if (wrapper != null)
+                    wrapper.Dispose();
+                DecorationByControls.Remove(control);
+            }
+            else
+            {
+                if (wrapper == null)
+                    wrapper = new DecorationControl(decoration, control);
+                wrapper.DecorationType = decoration;
+                DecorationByControls[control] = wrapper;
+            }
+        }
+
 
 
     }
