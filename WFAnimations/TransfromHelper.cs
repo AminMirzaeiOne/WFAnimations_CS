@@ -217,5 +217,16 @@ namespace WFAnimations
             bmp2.UnlockBits(bmpData2);
         }
 
+        public static void DoRotate(TransfromNeededEventArg e, Animation animation)
+        {
+            var rect = e.ClientRectangle;
+            var center = new PointF(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
+
+            e.Matrix.Translate(center.X, center.Y);
+            if (e.CurrentTime > animation.RotateLimit)
+                e.Matrix.Rotate(360 * (e.CurrentTime - animation.RotateLimit) * animation.RotateCoeff);
+            e.Matrix.Translate(-center.X, -center.Y);
+        }
+
     }
 }
