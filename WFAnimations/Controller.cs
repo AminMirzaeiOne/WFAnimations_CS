@@ -255,6 +255,32 @@ namespace WFAnimations
             return bmp;
         }
 
+        protected virtual Bitmap GetForeground(Control ctrl)
+        {
+            Bitmap bmp = null;
+
+            if (!ctrl.IsDisposed)
+            {
+                if (ctrl.Parent == null)
+                {
+                    bmp = new Bitmap(ctrl.Width + animation.Padding.Horizontal, ctrl.Height + animation.Padding.Vertical);
+                    ctrl.DrawToBitmap(bmp, new Rectangle(animation.Padding.Left, animation.Padding.Top, ctrl.Width, ctrl.Height));
+                }
+                else
+                {
+                    bmp = new Bitmap(DoubleBitmap.Width, DoubleBitmap.Height);
+                    ctrl.DrawToBitmap(bmp, new Rectangle(ctrl.Left - DoubleBitmap.Left, ctrl.Top - DoubleBitmap.Top, ctrl.Width, ctrl.Height));
+#if debug
+            using (var gr = Graphics.FromImage(bmp))
+                gr.DrawLine(Pens.Red, 0, 0, DoubleBitmap.Width, DoubleBitmap.Height);
+#endif
+                }
+            }
+
+
+            return bmp;
+        }
+
 
     }
 }
