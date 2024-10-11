@@ -153,6 +153,86 @@ namespace WFAnimations
                 thread.Abort();
         }
 
+        void Work()
+        {
+            while (true)
+            {
+                Thread.Sleep(Interval);
+                try
+                {
+                    var count = 0;
+                    var completed = new List<QueueItem>();
+                    var actived = new List<QueueItem>();
+
+                    //find completed
+                    lock (queue)
+                    {
+                        count = queue.Count;
+                        var wasActive = false;
+
+                        foreach (var item in queue)
+                        {
+                            if (item.IsActive) wasActive = true;
+
+                            if (item.controller != null && item.controller.IsCompleted)
+                                completed.Add(item);
+                            else
+                            {
+                                if (item.IsActive)
+                                {
+                                    if ((DateTime.Now - item.ActivateTime).TotalMilliseconds > MaxAnimationTime)
+                                        completed.Add(item);
+                                    else
+                                        actived.Add(item);
+                                }
+                            }
+                        }
+                        //start next animation
+                        if (!wasActive)
+                            foreach (var item in queue)
+                                if (!item.IsActive)
+                                {
+                                    actived.Add(item);
+                                    item.IsActive = true;
+                                    break;
+                                }
+                    }
+
+                    //completed
+                    foreach (var item in completed)
+                        OnCompleted(item);
+
+                    //build next frame of DoubleBitmap
+                    foreach (var item in actived)
+                        try
+                        {
+                            var item2 = item;
+                            //build next frame of DoubleBitmap
+                            //item.control.BeginInvoke(new MethodInvoker(() => DoAnimation(item2)));
+                            invokerControl.BeginInvoke(new MethodInvoker(() => DoAnimation(item2)));
+                        }
+                        catch
+                        {
+                            //we can not start animation, remove from queue
+                            OnCompleted(item);
+                        }
+
+                    if (count == 0)
+                    {
+                        if (completed.Count > 0)
+                            OnAllAnimationsCompleted();
+                        CheckRequests();
+                    }
+                }
+                catch
+                {
+                    //form was closed
+                }
+            }
+        }
+
+
+
 
     }
 }
