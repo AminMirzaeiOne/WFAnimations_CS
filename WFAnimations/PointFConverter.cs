@@ -65,5 +65,21 @@ namespace WFAnimations
             return base.ConvertFrom(context, culture, value);
         }
 
+        /// <summary>
+        /// Converts the PointF into a string
+        /// </summary>
+        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                if (value.GetType() == typeof(PointF))
+                {
+                    PointF pt = (PointF)value;
+                    return string.Format("{{X={0}, Y={1}}}", pt.X, pt.Y);
+                }
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+
     }
 }
