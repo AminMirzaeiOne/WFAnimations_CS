@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -400,6 +401,35 @@ namespace WFAnimations
             this.WaitAnimation(control);
         }
 
+
+        /// <summary>
+        /// It makes snapshot of the control before updating. It requires EndUpdate calling.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        /// <param name="parallel">Allows to animate it same time as other animations</param>
+        /// <param name="animation">Personal animation</param>
+        /// <param name="clipRectangle">Clip rectangle for animation</param>
+        public void BeginUpdate(Control control, bool parallel = false, Animation animation = null, Rectangle clipRectangle = default(Rectangle))
+        {
+            AddToQueue(control, AnimateMode.BeginUpdate, parallel, animation, clipRectangle);
+
+            bool wait = false;
+            do
+            {
+                wait = false;
+                lock (queue)
+                    foreach (var item in queue)
+                        if (item.control == control && item.mode == AnimateMode.BeginUpdate)
+                        {
+                            if (item.controller == null)
+                                wait = true;
+                        }
+
+                if (wait)
+                    Application.DoEvents();
+
+            } while (wait);
+        }
 
 
     }
