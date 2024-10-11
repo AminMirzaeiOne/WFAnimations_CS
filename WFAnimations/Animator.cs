@@ -18,6 +18,8 @@ namespace WFAnimations
         IContainer components = null;
         protected List<QueueItem> queue = new List<QueueItem>();
         private Thread thread;
+        System.Windows.Forms.Timer timer;
+
 
     }
 }
