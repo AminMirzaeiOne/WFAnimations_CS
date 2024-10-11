@@ -146,6 +146,55 @@ namespace WFAnimations
             return argbValues;
         }
 
+        protected virtual Bitmap OnNonLinearTransfromNeeded()
+        {
+            Bitmap bmp = null;
+            if (CtrlBmp == null)
+                return null;
+
+            try
+            {
+                bmp = new Bitmap(Width, Height);
+
+                const int bytesPerPixel = 4;
+                PixelFormat pxf = PixelFormat.Format32bppArgb;
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, pxf);
+                IntPtr ptr = bmpData.Scan0;
+                int numBytes = bmp.Width * bmp.Height * bytesPerPixel;
+                byte[] argbValues = new byte[numBytes];
+
+                Marshal.Copy(ptr, argbValues, 0, numBytes);
+
+                var e = new NonLinearTransfromNeededEventArg() { CurrentTime = CurrentTime, ClientRectangle = ClientRectangle, Pixels = argbValues, Stride = bmpData.Stride, SourcePixels = CtrlPixels, SourceClientRectangle = new Rectangle(Padding.Left, Padding.Top, DecoratedControl.Width, DecoratedControl.Height), SourceStride = CtrlStride };
+
+                try
+                {
+                    if (NonLinearTransfromNeeded != null)
+                        NonLinearTransfromNeeded(this, e);
+                    else
+                        e.UseDefaultTransform = true;
+
+                    if (e.UseDefaultTransform)
+                    {
+                        switch (DecorationType)
+                        {
+                            case DecorationType.BottomMirror: TransfromHelper.DoBottomMirror(e); break;
+                        }
+                    }
+                }
+                catch { }
+
+                Marshal.Copy(argbValues, 0, ptr, numBytes);
+                bmp.UnlockBits(bmpData);
+            }
+            catch
+            {
+            }
+
+            return bmp;
+        }
+
 
 
     }
