@@ -39,9 +39,3 @@ this.animator1.Hide(this.button1);
 
 https://github.com/user-attachments/assets/3a74d414-f2a9-4506-950e-57ac469a3400
 
-<h3>🪟 The difference between Flat and Fusion styles</h3>
-
-<h4>Fusion</h4>
-<img width="400" alt="Screenshot 57" src="https://github.com/user-attachments/assets/2f4fc654-c581-4187-90c3-a3201098e5af">
-<h4>Flat</h4>
-<img width="400" alt="Screenshot 58" src="https://github.com/user-attachments/assets/9a4575fd-b8e2-47e6-89f4-b9f81d200740">
