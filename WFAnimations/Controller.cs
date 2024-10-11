@@ -17,6 +17,7 @@ namespace WFAnimations
         Point[] buffer;
         byte[] pixelsBuffer;
         protected Rectangle CustomClipRect;
+        AnimateMode mode;
 
 
 
