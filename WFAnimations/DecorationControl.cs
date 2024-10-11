@@ -8,6 +8,7 @@ namespace WFAnimations
 {
     public class DecorationControl : System.Windows.Forms.UserControl
     {
+        public DecorationType DecorationType { get; set; }
 
     }
 }
