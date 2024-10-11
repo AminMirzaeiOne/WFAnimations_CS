@@ -551,6 +551,19 @@ namespace WFAnimations
                 requests.Add(item);
         }
 
+        private Controller CreateDoubleBitmap(Control control, AnimateMode mode, Animation animation, Rectangle clipRect)
+        {
+            var controller = new Controller(control, mode, animation, TimeStep, clipRect);
+            controller.Upside = this.Upside;
+            controller.TransfromNeeded += OnTransformNeeded;
+            if (NonLinearTransfromNeeded != null)
+                controller.NonLinearTransfromNeeded += OnNonLinearTransfromNeeded;
+            controller.MouseDown += OnMouseDown;
+            controller.DoubleBitmap.Cursor = Cursor;
+            controller.FramePainted += OnFramePainted;
+            return controller;
+        }
+
 
 
     }
