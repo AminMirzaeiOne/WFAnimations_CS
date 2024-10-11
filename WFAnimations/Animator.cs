@@ -635,6 +635,12 @@ namespace WFAnimations
                 OnAllAnimationsCompleted();
         }
 
+        protected virtual void OnAnimationCompleted(AnimationCompletedEventArg e)
+        {
+            if (AnimationCompleted != null)
+                AnimationCompleted(this, e);
+        }
+
 
 
     }
