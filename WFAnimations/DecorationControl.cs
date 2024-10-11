@@ -25,6 +25,9 @@ namespace WFAnimations
         public Bitmap Frame { get; set; }
         public float CurrentTime { get; set; }
 
+        public event EventHandler<NonLinearTransfromNeededEventArg> NonLinearTransfromNeeded;
+
+
         public DecorationControl(DecorationType type, Control decoratedControl)
         {
             this.DecorationType = type;
