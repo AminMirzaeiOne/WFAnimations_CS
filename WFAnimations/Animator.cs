@@ -448,6 +448,16 @@ namespace WFAnimations
             }
         }
 
+        /// <summary>
+        /// Upadates control view with animation and waits while animation will be completed. It requires to call BeginUpdate before.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        public void EndUpdateSync(Control control)
+        {
+            EndUpdate(control);
+            WaitAnimation(control);
+        }
+
 
     }
 }
