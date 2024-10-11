@@ -4,24 +4,20 @@
 Intelligent autocomplete control for textboxes and richtextboxes (Windows form) <br />
 
 <h2> ⭐ Features</h2>
-- Light Mode and Dark Mode<br />
-- Theme Colors support <br />
-- Support Symbol Icons <br />
-- Optimized for big data <br />
-- Support for different fonts <br />
-- Support for 67 living languages ​​of the world <br />
-- Support Fusion and Flat styles <br />
+-More than 10 diverse and attractive animations <br />
+- Custom time animations <br />
+- Reverse the way animations work <br />
 
 <h2> 🏗 Build Information</h2>
-- Made in year = February 2016 <br />
+- Made in year = February 2018 <br />
 ----------------------------------------------- <br />
-- .NET Framework =  4.5.1 <br />
-- Csharp = Csharp 5.0.0 <br />
-- Micrsoft Visual Studio = VS 2012 <br />
+- .NET Framework =  4.7.1 <br />
+- Csharp = Csharp 7.0.0 <br />
+- Micrsoft Visual Studio = VS 2019 <br />
 
 
 <h2> 📜 Program Rules</h2>
-1 - The MIT license rules must be followed completely and comprehensively<br />
+1 - All GPL license rules must be followed <br />
 2 - The name of the GitHub founder and main developer (aminmirzaeione) should be mentioned <br />
 
 <h2> 💡 How to use</h2>
