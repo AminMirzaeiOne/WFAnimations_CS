@@ -25,6 +25,11 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler<AnimationCompletedEventArg> AnimationCompleted;
 
+        /// <summary>
+        /// Ocuurs when all animations are completed
+        /// </summary>
+        public event EventHandler AllAnimationsCompleted;
+
 
     }
 }
