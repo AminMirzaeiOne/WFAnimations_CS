@@ -365,6 +365,18 @@ namespace WFAnimations
             AddToQueue(control, AnimateMode.Show, parallel, animation);
         }
 
+        /// <summary>
+        /// Shows the control and waits while animation will be completed. As result the control will be shown with animation.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        /// <param name="parallel">Allows to animate it same time as other animations</param>
+        /// <param name="animation">Personal animation</param>
+        public void ShowSync(Control control, bool parallel = false, Animation animation = null)
+        {
+            Show(control, parallel, animation);
+            WaitAnimation(control);
+        }
+
 
 
     }
