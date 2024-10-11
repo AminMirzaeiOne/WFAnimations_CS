@@ -19,6 +19,7 @@ namespace WFAnimations
         protected List<QueueItem> queue = new List<QueueItem>();
         private Thread thread;
         System.Windows.Forms.Timer timer;
+        private AnimationType animationType;
 
         /// <summary>
         /// Occurs when animation of the control is completed
