@@ -431,6 +431,23 @@ namespace WFAnimations
             } while (wait);
         }
 
+        /// <summary>
+        /// Upadates control view with animation. It requires to call BeginUpdate before.
+        /// </summary>
+        /// <param name="control">Target control</param>
+        public void EndUpdate(Control control)
+        {
+            lock (queue)
+            {
+                foreach (var item in queue)
+                    if (item.control == control && item.mode == AnimateMode.BeginUpdate)
+                    {
+                        item.controller.EndUpdate();
+                        item.mode = AnimateMode.Update;
+                    }
+            }
+        }
+
 
     }
 }
