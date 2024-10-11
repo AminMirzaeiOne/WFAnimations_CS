@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WFAnimations
 {
@@ -26,6 +27,8 @@ namespace WFAnimations
 
         public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
         public event EventHandler<NonLinearTransfromNeededEventArg> NonLinearTransfromNeeded;
+        public event EventHandler<PaintEventArgs> FramePainting;
+
 
 
 
