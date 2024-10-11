@@ -9,6 +9,8 @@ namespace WFAnimations
     public static class TransfromHelper
     {
         const int bytesPerPixel = 4;
+        static Random rnd = new Random();
+
 
     }
 }
