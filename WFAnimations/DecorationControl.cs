@@ -88,6 +88,11 @@ namespace WFAnimations
             }
         }
 
+        private void control_VisibleChanged(object sender, EventArgs e)
+        {
+            Init();
+        }
+
 
     }
 }
