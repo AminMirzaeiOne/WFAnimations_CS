@@ -74,6 +74,9 @@ namespace WFAnimations
             return (Animation)MemberwiseClone();
         }
 
+        public static WFAnimations.Animation Rotate { get { return new Animation { RotateCoeff = 1f, TransparencyCoeff = 1, Padding = new Padding(50, 50, 50, 50) }; } }
+
+
 
 
 
