@@ -65,6 +65,14 @@ namespace WFAnimations
             }
         }
 
+        private void decoratedControl_Paint(object sender, PaintEventArgs e)
+        {
+            if (!isSnapshotNow)
+            {
+                Invalidate();
+            }
+        }
+
 
     }
 }
