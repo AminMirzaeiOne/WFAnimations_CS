@@ -375,6 +375,11 @@ namespace WFAnimations
 #endif
         }
 
+        public bool IsCompleted
+        {
+            get { return (TimeStep >= 0f && CurrentTime >= animation.MaxTime) || (TimeStep <= 0f && CurrentTime <= animation.MinTime); }
+        }
+
 
     }
 }
