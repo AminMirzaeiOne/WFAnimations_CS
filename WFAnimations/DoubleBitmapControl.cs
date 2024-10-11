@@ -13,6 +13,8 @@ namespace WFAnimations
         Bitmap frame;
 
         Bitmap IFakeControl.BgBmp { get { return this.bgBmp; } set { this.bgBmp = value; } }
+        Bitmap IFakeControl.Frame { get { return this.frame; } set { this.frame = value; } }
+
 
     }
 }
