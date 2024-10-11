@@ -35,6 +35,9 @@ namespace WFAnimations
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
         public PointF MosaicCoeff { get; set; }
 
+        public int MosaicSize { get; set; }
+
+
 
 
     }
