@@ -54,5 +54,12 @@ namespace WFAnimations
             OnFramePainted(e);
         }
 
+        private void OnTransfromNeeded(TransfromNeededEventArg ea)
+        {
+            if (TransfromNeeded != null)
+                TransfromNeeded(this, ea);
+        }
+
+
     }
 }
