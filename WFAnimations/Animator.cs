@@ -720,8 +720,17 @@ namespace WFAnimations
 
         #endregion
 
+        
 
 
 
+
+    }
+
+    public enum DecorationType
+    {
+        None,
+        BottomMirror,
+        Custom
     }
 }
