@@ -16,6 +16,8 @@ namespace WFAnimations
         Bitmap frame;
         Padding padding;
         Control control;
+        Point controlLocation;
+
 
         public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
 
