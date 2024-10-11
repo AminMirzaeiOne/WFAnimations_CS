@@ -19,5 +19,8 @@ namespace WFAnimations
         public Bitmap Frame { get { return (DoubleBitmap as IFakeControl).Frame; } set { (DoubleBitmap as IFakeControl).Frame = value; } }
 
 
+        public float CurrentTime { get; private set; }
+
+
     }
 }
