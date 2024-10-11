@@ -711,6 +711,10 @@ namespace WFAnimations
             }
         }
 
+        private readonly Dictionary<Control, DecorationControl> DecorationByControls = new Dictionary<Control, DecorationControl>();
+
+
+
 
 
     }
