@@ -21,6 +21,8 @@ namespace WFAnimations
         System.Windows.Forms.Timer timer;
         private AnimationType animationType;
         Control invokerControl;
+        int counter;
+
 
 
         /// <summary>
@@ -300,6 +302,8 @@ namespace WFAnimations
                 }
             }));
         }
+
+
 
 
     }
