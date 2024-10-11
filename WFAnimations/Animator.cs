@@ -303,6 +303,29 @@ namespace WFAnimations
             }));
         }
 
+        private void DoAnimation(QueueItem item)
+        {
+            lock (item)
+            {
+                try
+                {
+                    if (item.controller == null)
+                    {
+                        item.controller = CreateDoubleBitmap(item.control, item.mode, item.animation,
+                                                             item.clipRectangle);
+                    }
+                    if (item.controller.IsCompleted)
+                        return;
+                    item.controller.BuildNextFrame();
+                }
+                catch
+                {
+                    if (item.controller != null)
+                        item.controller.Dispose();
+                    OnCompleted(item);
+                }
+            }
+        }
 
 
 
