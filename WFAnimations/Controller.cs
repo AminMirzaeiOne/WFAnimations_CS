@@ -380,6 +380,13 @@ namespace WFAnimations
             get { return (TimeStep >= 0f && CurrentTime >= animation.MaxTime) || (TimeStep <= 0f && CurrentTime <= animation.MinTime); }
         }
 
+        internal void BuildNextFrame()
+        {
+            if (mode == AnimateMode.BeginUpdate)
+                return;
+            DoubleBitmap.Invalidate();
+        }
+
 
     }
 }
