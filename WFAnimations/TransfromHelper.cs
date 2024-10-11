@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -177,6 +178,43 @@ namespace WFAnimations
             var pixels = e.Pixels;
             for (int counter = 0; counter < pixels.Length; counter += bytesPerPixel)
                 pixels[counter + 3] = (byte)(pixels[counter + 3] * opacity);
+        }
+
+        public static void CalcDifference(Bitmap bmp1, Bitmap bmp2)
+        {
+            System.Drawing.Imaging.PixelFormat pxf = System.Drawing.Imaging.PixelFormat.Format32bppArgb;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(
+                0, 0, bmp1.Width, bmp1.Height);
+
+            BitmapData bmpData1 = bmp1.LockBits(rect, ImageLockMode.ReadWrite, pxf);
+            System.IntPtr ptr1 = bmpData1.Scan0;
+
+            System.Drawing.Imaging.BitmapData bmpData2 = bmp2.LockBits(rect, ImageLockMode.ReadOnly, pxf);
+            System.IntPtr ptr2 = bmpData2.Scan0;
+
+            int numBytes = bmp1.Width * bmp1.Height * bytesPerPixel;
+            System.Byte[] pixels1 = new System.Byte[numBytes];
+            System.Byte[] pixels2 = new System.Byte[numBytes];
+
+            System.Runtime.InteropServices.Marshal.Copy(ptr1, pixels1, 0, numBytes);
+            System.Runtime.InteropServices.Marshal.Copy(ptr2, pixels2, 0, numBytes);
+
+            for (int i = 0; i < numBytes; i += bytesPerPixel)
+            {
+                if (pixels1[i + 0] == pixels2[i + 0] &&
+                    pixels1[i + 1] == pixels2[i + 1] &&
+                    pixels1[i + 2] == pixels2[i + 2])
+                {
+                    pixels1[i + 0] = 255;
+                    pixels1[i + 1] = 255;
+                    pixels1[i + 2] = 255;
+                    pixels1[i + 3] = 0;
+                }
+            }
+
+            System.Runtime.InteropServices.Marshal.Copy(pixels1, 0, ptr1, numBytes);
+            bmp1.UnlockBits(bmpData1);
+            bmp2.UnlockBits(bmpData2);
         }
 
     }
