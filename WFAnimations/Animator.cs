@@ -713,6 +713,12 @@ namespace WFAnimations
 
         private readonly Dictionary<Control, DecorationControl> DecorationByControls = new Dictionary<Control, DecorationControl>();
 
+        public bool CanExtend(object extendee)
+        {
+            return extendee is Control;
+        }
+
+        #endregion
 
 
 
