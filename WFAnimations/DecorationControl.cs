@@ -16,6 +16,7 @@ namespace WFAnimations
         public Bitmap CtrlBmp { get; set; }
         public byte[] CtrlPixels { get; set; }
         public int CtrlStride { get; set; }
+        public Bitmap Frame { get; set; }
 
 
     }
