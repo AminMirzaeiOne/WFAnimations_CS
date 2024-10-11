@@ -16,6 +16,7 @@ namespace WFAnimations
         protected Bitmap ctrlBmp;
         Point[] buffer;
         byte[] pixelsBuffer;
+        protected Rectangle CustomClipRect;
 
 
 
