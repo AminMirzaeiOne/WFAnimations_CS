@@ -87,6 +87,80 @@ namespace WFAnimations
                 rect.Height + animation.Padding.Top + animation.Padding.Bottom);
         }
 
+        public Controller(Control control, AnimateMode mode, Animation animation, float timeStep, Rectangle controlClipRect)
+        {
+            if (control is Form)
+                DoubleBitmap = new DoubleBitmapForm();
+            else
+                DoubleBitmap = new DoubleBitmapControl();
+
+            (DoubleBitmap as IFakeControl).FramePainting += OnFramePainting;
+            (DoubleBitmap as IFakeControl).FramePainted += OnFramePainting;
+            (DoubleBitmap as IFakeControl).TransfromNeeded += OnTransfromNeeded;
+            DoubleBitmap.MouseDown += OnMouseDown;
+
+            this.animation = animation;
+            this.AnimatedControl = control;
+            this.mode = mode;
+
+            this.CustomClipRect = controlClipRect;
+
+            if (mode == AnimateMode.Show || mode == AnimateMode.BeginUpdate)
+                timeStep = -timeStep;
+
+            this.TimeStep = timeStep * (animation.TimeCoeff == 0f ? 1f : animation.TimeCoeff);
+            if (this.TimeStep == 0f)
+                timeStep = 0.01f;
+
+            try
+            {
+                switch (mode)
+                {
+                    case AnimateMode.Hide:
+                        {
+                            BgBmp = GetBackground(control);
+                            (DoubleBitmap as IFakeControl).InitParent(control, animation.Padding);
+                            ctrlBmp = GetForeground(control);
+                            DoubleBitmap.Visible = true;
+                            control.Visible = false;
+                        }
+                        break;
+
+                    case AnimateMode.Show:
+                        {
+                            BgBmp = GetBackground(control);
+                            (DoubleBitmap as IFakeControl).InitParent(control, animation.Padding);
+                            DoubleBitmap.Visible = true;
+                            DoubleBitmap.Refresh();
+                            control.Visible = true;
+                            ctrlBmp = GetForeground(control);
+                        }
+                        break;
+
+                    case AnimateMode.BeginUpdate:
+                    case AnimateMode.Update:
+                        {
+                            (DoubleBitmap as IFakeControl).InitParent(control, animation.Padding);
+                            BgBmp = GetBackground(control, true);
+                            DoubleBitmap.Visible = true;
+
+                        }
+                        break;
+                }
+            }
+            catch
+            {
+                Dispose();
+            }
+#if debug
+            BgBmp.Save("c:\\bgBmp.png");
+            if (ctrlBmp != null)
+                ctrlBmp.Save("c:\\ctrlBmp.png");
+#endif
+
+            CurrentTime = timeStep > 0 ? animation.MinTime : animation.MaxTime;
+        }
+
 
     }
 }
