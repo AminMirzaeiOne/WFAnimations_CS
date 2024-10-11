@@ -20,6 +20,8 @@ namespace WFAnimations
 
 
         public float CurrentTime { get; private set; }
+        protected float TimeStep { get; private set; }
+
 
 
     }
