@@ -38,6 +38,9 @@ namespace WFAnimations
         public int MosaicSize { get; set; }
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
+        public PointF BlindCoeff { get; set; }
+
 
 
     }
