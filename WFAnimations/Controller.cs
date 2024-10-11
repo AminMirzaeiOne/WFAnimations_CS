@@ -14,6 +14,8 @@ namespace WFAnimations
     public class Controller
     {
         protected Bitmap ctrlBmp;
+        Point[] buffer;
+
 
 
         protected Bitmap BgBmp { get { return (DoubleBitmap as IFakeControl).BgBmp; } set { (DoubleBitmap as IFakeControl).BgBmp = value; } }
