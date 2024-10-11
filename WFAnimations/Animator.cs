@@ -604,6 +604,37 @@ namespace WFAnimations
                 e.UseDefaultMatrix = true;
         }
 
+        /// <summary>
+        /// Clears queue.
+        /// </summary>
+        public void ClearQueue()
+        {
+            List<QueueItem> items = null;
+            lock (queue)
+            {
+                items = new List<QueueItem>(queue);
+                queue.Clear();
+            }
+
+
+            foreach (var item in items)
+            {
+                if (item.control != null)
+                    item.control.BeginInvoke(new MethodInvoker(() =>
+                    {
+                        switch (item.mode)
+                        {
+                            case AnimateMode.Hide: item.control.Visible = false; break;
+                            case AnimateMode.Show: item.control.Visible = true; break;
+                        }
+                    }));
+                OnAnimationCompleted(new AnimationCompletedEventArg { Animation = item.animation, Control = item.control, Mode = item.mode });
+            }
+
+            if (items.Count > 0)
+                OnAllAnimationsCompleted();
+        }
+
 
 
     }
