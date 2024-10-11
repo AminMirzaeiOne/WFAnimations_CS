@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -125,6 +127,20 @@ namespace WFAnimations
                 isSnapshotNow = false;
             }
             return bmp;
+        }
+
+        byte[] GetPixels(Bitmap bmp)
+        {
+            const int bytesPerPixel = 4;
+            PixelFormat pxf = PixelFormat.Format32bppArgb;
+            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadOnly, pxf);
+            IntPtr ptr = bmpData.Scan0;
+            int numBytes = bmp.Width * bmp.Height * bytesPerPixel;
+            byte[] argbValues = new byte[numBytes];
+            Marshal.Copy(ptr, argbValues, 0, numBytes);
+            bmp.UnlockBits(bmpData);
+            return argbValues;
         }
 
 
