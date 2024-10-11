@@ -35,6 +35,11 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
 
+        /// <summary>
+        /// Occurs when needed non-linear transformation
+        /// </summary>
+        public event EventHandler<NonLinearTransfromNeededEventArg> NonLinearTransfromNeeded;
+
 
     }
 }
