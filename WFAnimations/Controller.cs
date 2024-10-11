@@ -161,6 +161,12 @@ namespace WFAnimations
             CurrentTime = timeStep > 0 ? animation.MinTime : animation.MaxTime;
         }
 
+        protected virtual void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (MouseDown != null)
+                MouseDown(this, e);
+        }
+
 
     }
 }
