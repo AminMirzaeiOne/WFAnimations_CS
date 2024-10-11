@@ -647,6 +647,42 @@ namespace WFAnimations
                 AllAnimationsCompleted(this, EventArgs.Empty);
         }
 
+        #region Nested type: QueueItem
+
+        protected class QueueItem
+        {
+            public Animation animation;
+            public Controller controller;
+            public Control control;
+            public DateTime ActivateTime { get; private set; }
+            public AnimateMode mode;
+            public Rectangle clipRectangle;
+
+            public bool isActive;
+            public bool IsActive
+            {
+                get { return isActive; }
+                set
+                {
+                    if (isActive == value) return;
+                    isActive = value;
+                    if (value)
+                        ActivateTime = DateTime.Now;
+                }
+            }
+
+            public override string ToString()
+            {
+                StringBuilder sb = new StringBuilder();
+                if (control != null)
+                    sb.Append(control.GetType().Name + " ");
+                sb.Append(mode);
+                return sb.ToString();
+            }
+        }
+
+        #endregion
+
 
 
     }
