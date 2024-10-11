@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -308,7 +309,55 @@ namespace WFAnimations
         }
 
 
+        protected virtual Bitmap OnNonLinearTransfromNeeded()
+        {
+            Bitmap bmp = null;
+            if (ctrlBmp == null)
+                return null;
 
+            if (NonLinearTransfromNeeded == null)
+                if (!animation.IsNonLinearTransformNeeded)
+                    return ctrlBmp;
+
+            try
+            {
+                bmp = (Bitmap)ctrlBmp.Clone();
+
+                const int bytesPerPixel = 4;
+                PixelFormat pxf = PixelFormat.Format32bppArgb;
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, pxf);
+                IntPtr ptr = bmpData.Scan0;
+                int numBytes = bmp.Width * bmp.Height * bytesPerPixel;
+                byte[] argbValues = new byte[numBytes];
+
+                System.Runtime.InteropServices.Marshal.Copy(ptr, argbValues, 0, numBytes);
+
+                var e = new NonLinearTransfromNeededEventArg() { CurrentTime = CurrentTime, ClientRectangle = DoubleBitmap.ClientRectangle, Pixels = argbValues, Stride = bmpData.Stride };
+
+                if (NonLinearTransfromNeeded != null)
+                    NonLinearTransfromNeeded(this, e);
+                else
+                    e.UseDefaultTransform = true;
+
+                if (e.UseDefaultTransform)
+                {
+                    TransfromHelper.DoBlind(e, animation);
+                    TransfromHelper.DoMosaic(e, animation, ref buffer, ref pixelsBuffer);
+
+                    TransfromHelper.DoTransparent(e, animation);
+                    TransfromHelper.DoLeaf(e, animation);
+                }
+
+                System.Runtime.InteropServices.Marshal.Copy(argbValues, 0, ptr, numBytes);
+                bmp.UnlockBits(bmpData);
+            }
+            catch
+            {
+            }
+
+            return bmp;
+        }
 
 
     }
