@@ -15,6 +15,7 @@ namespace WFAnimations
     public class Animator : Component, IExtenderProvider
     {
         IContainer components = null;
+        protected List<QueueItem> queue = new List<QueueItem>();
 
     }
 }
