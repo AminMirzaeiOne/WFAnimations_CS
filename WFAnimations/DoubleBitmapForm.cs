@@ -103,6 +103,12 @@ namespace WFAnimations
             this.padding = padding;
         }
 
+        void control_VisibleChanged(object sender, EventArgs e)
+        {
+            controlLocation = (sender as Control).Location;
+            var s = (sender as Control).Size;
+        }
+
 
 
     }
