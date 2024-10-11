@@ -8,6 +8,7 @@ namespace WFAnimations
 {
     public static class TransfromHelper
     {
+        const int bytesPerPixel = 4;
 
     }
 }
