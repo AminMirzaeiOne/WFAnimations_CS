@@ -45,6 +45,13 @@ namespace WFAnimations
         /// </summary>
         public event EventHandler<MouseEventArgs> MouseDown;
 
+        /// <summary>
+        /// Occurs when frame of animation is painting
+        /// </summary>
+        public event EventHandler<PaintEventArgs> FramePainted;
+
+
+
 
     }
 }
