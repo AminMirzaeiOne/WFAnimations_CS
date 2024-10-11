@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,44 @@ namespace WFAnimations
         {
             if (sourceType == typeof(string)) return true;
             return base.CanConvertFrom(context, sourceType);
+        }
+
+        /// <summary>
+        /// Converts the specified string into a PointF
+        /// </summary>
+        public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
+        {
+            if (value is string)
+            {
+                try
+                {
+                    string s = (string)value;
+                    string[] converterParts = s.Split(',');
+                    float x = 0;
+                    float y = 0;
+                    if (converterParts.Length > 1)
+                    {
+                        x = float.Parse(converterParts[0].Trim().Trim('{', 'X', 'x', '='));
+                        y = float.Parse(converterParts[1].Trim().Trim('}', 'Y', 'y', '='));
+                    }
+                    else if (converterParts.Length == 1)
+                    {
+                        x = float.Parse(converterParts[0].Trim());
+                        y = 0;
+                    }
+                    else
+                    {
+                        x = 0F;
+                        y = 0F;
+                    }
+                    return new PointF(x, y);
+                }
+                catch
+                {
+                    throw new ArgumentException("Cannot convert [" + value.ToString() + "] to pointF");
+                }
+            }
+            return base.ConvertFrom(context, culture, value);
         }
 
     }
