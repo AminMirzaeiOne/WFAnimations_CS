@@ -23,6 +23,7 @@ namespace WFAnimations
         private AnimationType animationType;
         Control invokerControl;
         int counter;
+        List<QueueItem> requests = new List<QueueItem>();
 
 
 
@@ -490,6 +491,8 @@ namespace WFAnimations
                 Application.DoEvents();
             }
         }
+
+
 
 
     }
