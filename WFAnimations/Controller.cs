@@ -32,6 +32,7 @@ namespace WFAnimations
         public event EventHandler<MouseEventArgs> MouseDown;
 
         public Control DoubleBitmap { get; private set; }
+        public Control AnimatedControl { get; set; }
 
 
 
