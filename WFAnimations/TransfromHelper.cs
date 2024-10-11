@@ -257,5 +257,48 @@ namespace WFAnimations
                 }
         }
 
+        public static void DoBlur(NonLinearTransfromNeededEventArg e, int r)
+        {
+            var output = e.Pixels;
+            var source = e.SourcePixels;
+
+            var s = e.Stride;
+            var sy = e.ClientRectangle.Height;
+            var sx = e.ClientRectangle.Width;
+            var maxI = source.Length - bytesPerPixel;
+
+            for (int x = r; x < sx - r; x++)
+                for (int y = r; y < sy - r; y++)
+                {
+                    int outI = y * s + x * bytesPerPixel;
+
+                    int R = 0, G = 0, B = 0, A = 0;
+                    int counter = 0;
+                    for (int xx = x - r; xx < x + r; xx++)
+                        for (int yy = y - r; yy < y + r; yy++)
+                        {
+                            int srcI = yy * s + xx * bytesPerPixel;
+                            if (srcI >= 0 && srcI < maxI)
+                                if (source[srcI + 3] > 0)
+                                {
+                                    B += source[srcI + 0];
+                                    G += source[srcI + 1];
+                                    R += source[srcI + 2];
+                                    A += source[srcI + 3];
+                                    counter++;
+                                }
+                        }
+                    if (outI < maxI && counter > 5)
+                    {
+                        output[outI + 0] = (byte)(B / counter);
+                        output[outI + 1] = (byte)(G / counter);
+                        output[outI + 2] = (byte)(R / counter);
+                        output[outI + 3] = (byte)(A / counter);
+                    }
+                }
+        }
+
+
+
     }
 }
