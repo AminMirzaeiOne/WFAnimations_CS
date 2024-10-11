@@ -62,6 +62,12 @@ namespace WFAnimations
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public Animation DefaultAnimation { get; set; }
 
+        /// <summary>
+        /// Cursor of animated control
+        /// </summary>
+        [DefaultValue(typeof(Cursor), "Default")]
+        public Cursor Cursor { get; set; }
+
 
 
 
