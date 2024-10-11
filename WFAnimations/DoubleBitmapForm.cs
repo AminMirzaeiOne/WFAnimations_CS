@@ -109,7 +109,17 @@ namespace WFAnimations
             var s = (sender as Control).Size;
         }
 
-
+        public Bitmap BgBmp
+        {
+            get
+            {
+                return bgBmp;
+            }
+            set
+            {
+                bgBmp = value;
+            }
+        }
 
     }
 }
