@@ -72,6 +72,22 @@ namespace WFAnimations
                 FramePainted(this, e);
         }
 
+        public void InitParent(Control control, Padding padding)
+        {
+            Parent = control.Parent;
+            int i = 0;
+            if (control.Parent != null)
+            {
+                i = control.Parent.Controls.GetChildIndex(control);
+                control.Parent.Controls.SetChildIndex(this, i);
+            }
+            Bounds = new Rectangle(
+                control.Left - padding.Left,
+                control.Top - padding.Top,
+                control.Size.Width + padding.Left + padding.Right,
+                control.Size.Height + padding.Top + padding.Bottom);
+        }
+
 
     }
 }
