@@ -10,6 +10,9 @@ namespace WFAnimations
 {
     public class DecorationControl : System.Windows.Forms.UserControl
     {
+        private System.Windows.Forms.Timer tm;
+
+
         public DecorationType DecorationType { get; set; }
         public Control DecoratedControl { get; set; }
         public Padding Paddings { get; set; }
