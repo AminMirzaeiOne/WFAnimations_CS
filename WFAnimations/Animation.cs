@@ -32,6 +32,9 @@ namespace WFAnimations
         public PointF MosaicShift { get; set; }
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), EditorBrowsable(EditorBrowsableState.Advanced), TypeConverter(typeof(PointFConverter))]
+        public PointF MosaicCoeff { get; set; }
+
 
 
     }
