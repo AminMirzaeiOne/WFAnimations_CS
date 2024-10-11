@@ -20,6 +20,8 @@ namespace WFAnimations
         private Thread thread;
         System.Windows.Forms.Timer timer;
         private AnimationType animationType;
+        Control invokerControl;
+
 
         /// <summary>
         /// Occurs when animation of the control is completed
@@ -133,6 +135,8 @@ namespace WFAnimations
             thread.Name = "Animator thread";
             thread.Start();
         }
+
+
 
 
     }
