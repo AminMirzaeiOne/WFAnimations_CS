@@ -37,7 +37,9 @@ this.animator1.Hide(this.button1);
 
 <h2>📷 Screenshots</h2>
 
-https://github.com/user-attachments/assets/3a74d414-f2a9-4506-950e-57ac469a3400
+https://github.com/user-attachments/assets/3a74d414-f2a9-4506-950e-57ac469a3400<br />
+
+https://github.com/user-attachments/assets/e1b50fea-4b77-490a-a507-6f112e886b14
 
 
 
