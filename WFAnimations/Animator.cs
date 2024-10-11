@@ -146,6 +146,13 @@ namespace WFAnimations
             Start();
         }
 
+        void Animator_Disposed(object sender, EventArgs e)
+        {
+            ClearQueue();
+            if (thread != null)
+                thread.Abort();
+        }
+
 
     }
 }
