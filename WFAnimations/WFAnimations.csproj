@@ -69,6 +69,7 @@
     <Compile Include="Flags.cs" />
     <Compile Include="PointFConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransfromHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="WFIcon.ico" />
