@@ -588,6 +588,14 @@ namespace WFAnimations
             }
         }
 
+        protected virtual void OnNonLinearTransfromNeeded(object sender, NonLinearTransfromNeededEventArg e)
+        {
+            if (NonLinearTransfromNeeded != null)
+                NonLinearTransfromNeeded(this, e);
+            else
+                e.UseDefaultTransform = true;
+        }
+
 
 
     }
