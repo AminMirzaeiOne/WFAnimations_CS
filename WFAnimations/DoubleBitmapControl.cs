@@ -16,5 +16,8 @@ namespace WFAnimations
         Bitmap IFakeControl.Frame { get { return this.frame; } set { this.frame = value; } }
 
 
+        public event EventHandler<TransfromNeededEventArg> TransfromNeeded;
+
+
     }
 }
