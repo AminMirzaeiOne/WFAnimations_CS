@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace WFAnimations
         public DecorationType DecorationType { get; set; }
         public Control DecoratedControl { get; set; }
         public Padding Paddings { get; set; }
+        public Bitmap CtrlBmp { get; set; }
 
 
     }
