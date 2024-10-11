@@ -167,6 +167,28 @@ namespace WFAnimations
                 MouseDown(this, e);
         }
 
+        protected virtual void OnFramePainting(object sender, PaintEventArgs e)
+        {
+            var oldFrame = Frame;
+            Frame = null;
+
+            if (mode == AnimateMode.BeginUpdate)
+                return;
+
+            Frame = OnNonLinearTransfromNeeded();
+
+            if (oldFrame != Frame && oldFrame != null)
+                oldFrame.Dispose();
+
+            var time = CurrentTime + TimeStep;
+            if (time > animation.MaxTime) time = animation.MaxTime;
+            if (time < animation.MinTime) time = animation.MinTime;
+            CurrentTime = time;
+
+            if (FramePainting != null)
+                FramePainting(this, e);
+        }
+
 
     }
 }
