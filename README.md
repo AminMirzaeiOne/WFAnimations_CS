@@ -25,13 +25,13 @@ Intelligent autocomplete control for textboxes and richtextboxes (Windows form) 
 2 - Drag the Animator component inside the Visual Studio ToolBox into the form designer <br />
 3 - Specify the type of animation from the properties box <br />
 4 - Then, use the Show() method in the coding to display a control in an animated form <br />
-``
+```
 this.animator1.Show(this.button1);
-``
+```
 5 - Then, in coding, use the Hide() method to hide a control in an animated way <br />
-``
+```
 this.animator1.Hide(this.button1);
-``
+```
 
 <h2>📷 Screenshots</h2>
 
