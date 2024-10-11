@@ -564,6 +564,12 @@ namespace WFAnimations
             return controller;
         }
 
+        void OnFramePainted(object sender, PaintEventArgs e)
+        {
+            if (FramePainted != null)
+                FramePainted(sender, e);
+        }
+
 
 
     }
