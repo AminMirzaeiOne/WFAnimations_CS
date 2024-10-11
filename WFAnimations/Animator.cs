@@ -683,6 +683,16 @@ namespace WFAnimations
 
         #endregion
 
+        #region IExtenderProvider
+
+        public DecorationType GetDecoration(Control control)
+        {
+            if (DecorationByControls.ContainsKey(control))
+                return DecorationByControls[control].DecorationType;
+            else
+                return DecorationType.None;
+        }
+
 
 
     }
