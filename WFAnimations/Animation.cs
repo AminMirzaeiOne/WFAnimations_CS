@@ -105,4 +105,22 @@ namespace WFAnimations
         }
 
     }
+
+    public enum AnimationType
+    {
+        Custom = 0,
+        Rotate,
+        HorizSlide,
+        VertSlide,
+        Scale,
+        ScaleAndRotate,
+        HorizSlideAndRotate,
+        ScaleAndHorizSlide,
+        Transparent,
+        Leaf,
+        Mosaic,
+        Particles,
+        VertBlind,
+        HorizBlind
+    }
 }
