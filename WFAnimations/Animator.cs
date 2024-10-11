@@ -458,6 +458,15 @@ namespace WFAnimations
             WaitAnimation(control);
         }
 
+        /// <summary>
+        /// Waits while all animations will completed.
+        /// </summary>
+        public void WaitAllAnimations()
+        {
+            while (!IsCompleted)
+                Application.DoEvents();
+        }
+
 
     }
 }
