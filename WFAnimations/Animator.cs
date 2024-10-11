@@ -76,6 +76,15 @@ namespace WFAnimations
             get { lock (queue) return queue.Count == 0; }
         }
 
+        /// <summary>
+        /// Interval between frames (ms)
+        /// </summary>
+        [DefaultValue(10)]
+        public int Interval
+        {
+            get;
+            set;
+        }
 
 
 
