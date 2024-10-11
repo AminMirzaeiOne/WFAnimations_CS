@@ -359,6 +359,22 @@ namespace WFAnimations
             return bmp;
         }
 
+        public void EndUpdate()
+        {
+            var bmp = GetBackground(AnimatedControl, true, true);
+#if debug
+            bmp.Save("c:\\bmp.png");
+#endif
+            if (animation.AnimateOnlyDifferences)
+                TransfromHelper.CalcDifference(bmp, BgBmp);
+
+            ctrlBmp = bmp;
+            mode = AnimateMode.Update;
+#if debug
+            ctrlBmp.Save("c:\\ctrlBmp.png");
+#endif
+        }
+
 
     }
 }
