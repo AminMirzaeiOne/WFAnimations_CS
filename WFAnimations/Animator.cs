@@ -98,5 +98,16 @@ namespace WFAnimations
             set { animationType = value; InitDefaultAnimation(animationType); }
         }
 
+        public Animator()
+        {
+            Init();
+        }
+
+        public Animator(IContainer container)
+        {
+            container.Add(this);
+            Init();
+        }
+
     }
 }
