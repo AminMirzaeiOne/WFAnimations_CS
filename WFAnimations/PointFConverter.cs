@@ -15,5 +15,16 @@ namespace WFAnimations
         public PointFConverter()
         {
         }
+
+
+        /// <summary>
+        /// Boolean, true if the source type is a string
+        /// </summary>
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            if (sourceType == typeof(string)) return true;
+            return base.CanConvertFrom(context, sourceType);
+        }
+
     }
 }
