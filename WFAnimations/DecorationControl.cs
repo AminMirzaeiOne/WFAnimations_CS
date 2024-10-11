@@ -73,6 +73,21 @@ namespace WFAnimations
             }
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            CtrlBmp = GetForeground(DecoratedControl);
+            CtrlPixels = GetPixels(CtrlBmp);
+
+            if (Frame != null)
+                Frame.Dispose();
+            Frame = OnNonLinearTransfromNeeded();
+
+            if (Frame != null)
+            {
+                e.Graphics.DrawImage(Frame, Point.Empty);
+            }
+        }
+
 
     }
 }
