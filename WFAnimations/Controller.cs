@@ -54,6 +54,20 @@ namespace WFAnimations
             Hide();
         }
 
+        public void Hide()
+        {
+            if (DoubleBitmap != null)
+                try
+                {
+                    DoubleBitmap.BeginInvoke(new MethodInvoker(() =>
+                    {
+                        if (DoubleBitmap.Visible) DoubleBitmap.Hide();
+                        DoubleBitmap.Parent = null;
+                        //DoubleBitmap.Dispose();
+                    }));
+                }
+                catch { }
+        }
 
 
     }
