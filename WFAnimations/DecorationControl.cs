@@ -11,6 +11,7 @@ namespace WFAnimations
     {
         public DecorationType DecorationType { get; set; }
         public Control DecoratedControl { get; set; }
+        public Padding Paddings { get; set; }
 
 
     }
