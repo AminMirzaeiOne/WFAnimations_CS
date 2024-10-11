@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WFAnimations
 {
-    public class DoubleBitmapControl : System.Windows.Forms.Control, IFakeControl
+    public partial class DoubleBitmapControl : System.Windows.Forms.Control, IFakeControl
     {
         Bitmap bgBmp;
         Bitmap frame;
