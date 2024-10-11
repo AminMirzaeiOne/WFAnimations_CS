@@ -84,6 +84,7 @@ namespace WFAnimations
         public static Animation Transparent { get { return new Animation { TransparencyCoeff = 1 }; } }
         public static Animation Leaf { get { return new Animation { LeafCoeff = 1 }; } }
         public static Animation Mosaic { get { return new Animation { MosaicCoeff = new PointF(100f, 100f), MosaicSize = 20, Padding = new Padding(30, 30, 30, 30) }; } }
+        public static Animation Particles { get { return new Animation { MosaicCoeff = new PointF(200, 200), MosaicSize = 1, MosaicShift = new PointF(0, 0.5f), Padding = new Padding(100, 50, 100, 150), TimeCoeff = 2 }; } }
 
 
     }
